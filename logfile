@@ -1,0 +1,24 @@
+2022-05-28 11:23:16.518 PDT [29078] LOG:  starting PostgreSQL 14.3 on x86_64-apple-darwin21.3.0, compiled by Apple clang version 13.1.6 (clang-1316.0.21.2), 64-bit
+2022-05-28 11:23:16.519 PDT [29078] LOG:  listening on IPv6 address "::1", port 5432
+2022-05-28 11:23:16.519 PDT [29078] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-05-28 11:23:16.519 PDT [29078] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-05-28 11:23:16.522 PDT [29079] LOG:  database system was shut down at 2022-05-28 11:23:08 PDT
+2022-05-28 11:23:16.524 PDT [29078] LOG:  database system is ready to accept connections
+2022-05-28 11:23:19.828 PDT [29092] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:19.897 PDT [29093] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:19.898 PDT [29094] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:20.518 PDT [29095] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:20.520 PDT [29096] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:20.926 PDT [29097] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:20.929 PDT [29098] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:24.830 PDT [29106] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:24.900 PDT [29107] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:24.901 PDT [29108] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:29.834 PDT [29116] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:29.901 PDT [29117] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:29.901 PDT [29118] FATAL:  role "appuser" does not exist
+2022-05-28 11:23:34.503 PDT [29078] LOG:  received fast shutdown request
+2022-05-28 11:23:34.504 PDT [29078] LOG:  aborting any active transactions
+2022-05-28 11:23:34.504 PDT [29078] LOG:  background worker "logical replication launcher" (PID 29085) exited with exit code 1
+2022-05-28 11:23:34.505 PDT [29080] LOG:  shutting down
+2022-05-28 11:23:34.511 PDT [29078] LOG:  database system is shut down
