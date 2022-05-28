@@ -1,11 +1,14 @@
 from flask import Flask, Response, request
 from flask_cors import CORS, cross_origin
+from flask_socketio import SocketIO, send, emit
 from db import get_ducky, init_db, update_ducky_location, get_all_duckies
 import json
 
 app = Flask(__name__)
-cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['SECRET_KEY'] = 'Woweweweoahwoah'
+cors = CORS(app)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
 
 class BadRequestException(Exception):
@@ -37,18 +40,18 @@ def update_location():
     return Response(status=204)
 
 
-@app.route('/travel')
-@cross_origin()
-def move_ducky_1():
-    ducky = get_ducky(1)
-    location_id = ducky[1]
-    new_location = 1 if location_id == 2 else 2
-    update_ducky_location(ducky_id=1, location_id=new_location)
-
+@ socketio.on('message')
+def handle_json(json_data):
+    # todo error handling
+    # todo this shouldn't take 2 seconds - possibly optimize db connections
+    ducky_id = json_data['ducky_id']
+    location_id = json_data['location_id']
+    update_ducky_location(ducky_id=ducky_id, location_id=location_id)
     duckies_list = get_all_duckies()
-    return json.dumps(duckies_list, default=str)
+    response = json.dumps(duckies_list, default=str)
+    print(response)
+    emit('update', response, broadcast=True)
 
 
 if __name__ == '__main__':
-    app.run()
-    init_db()
+    socketio.run(app)
