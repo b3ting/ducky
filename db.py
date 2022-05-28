@@ -1,4 +1,5 @@
 import os
+from typing import Tuple
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
@@ -33,6 +34,18 @@ def init_db():
     conn.close()
 
 
+def get_ducky(ducky_id: int) -> Tuple[int, int]:
+    conn = get_db_conn()
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT id, location_id FROM ducky WHERE id = %s", str(ducky_id))
+    result = cur.fetchone()
+    conn.commit()
+    cur.close()
+    conn.close()
+    return result
+
+
 def get_all_duckies():
     conn = get_db_conn()
     cur = conn.cursor(cursor_factory=RealDictCursor)
@@ -44,7 +57,7 @@ def get_all_duckies():
     return results
 
 
-def update_ducky_location(ducky_id, location_id):
+def update_ducky_location(ducky_id: int, location_id: int):
     conn = get_db_conn()
     cur = conn.cursor()
     cur.execute("UPDATE ducky SET location_id = %s WHERE id = %s",

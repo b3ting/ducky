@@ -1,5 +1,5 @@
 from flask import Flask, Response, request
-from db import init_db, update_ducky_location, get_all_duckies
+from db import get_ducky, init_db, update_ducky_location, get_all_duckies
 import json
 
 app = Flask(__name__)
@@ -29,7 +29,16 @@ def update_location():
 
     update_ducky_location(ducky_id=ducky_id, location_id=location_id)
 
-    return Response(status=201)
+    return Response(status=204)
+
+
+@app.route('/travel')
+def move_ducky_1():
+    ducky = get_ducky(1)
+    location_id = ducky[1]
+    new_location = 1 if location_id == 2 else 2
+    update_ducky_location(ducky_id=1, location_id=new_location)
+    return Response(status=203)
 
 
 if __name__ == '__main__':
