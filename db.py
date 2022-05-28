@@ -1,16 +1,10 @@
 import os
 import psycopg2
 
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = 'postgres://snfzjbzottankj:863d78821e6ea8be9a60abe9fd829eed951cbcf100707bb3861ea0667c7df423@ec2-44-196-174-238.compute-1.amazonaws.com:5432/d8fitsasagpcfa'
 
 def get_db_conn():
   conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-  # conn = psycopg2.connect(
-  #   host="localhost",
-  #   database="shippo",
-  #   user="appuser",
-  #   password="123123123")
-
   return conn
 
 def init_db():
@@ -36,7 +30,10 @@ def init_db():
   cur.close()
   conn.close()
 
-
-
-
-init_db()
+def update_ducky_location(ducky_id, location_id):
+  conn = get_db_conn()
+  cur = conn.cursor()
+  cur.execute("UPDATE ducky SET location_id = %s WHERE id = %s", (location_id, ducky_id))
+  conn.commit()
+  cur.close()
+  conn.close()
