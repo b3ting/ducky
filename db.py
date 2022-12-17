@@ -1,13 +1,18 @@
 import os
 from typing import Tuple
-import psycopg2
-from psycopg2.extras import RealDictCursor
-
-DATABASE_URL = os.environ['DATABASE_URL']
-
+import MySQLdb
 
 def get_db_conn():
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    conn = connection = MySQLdb.connect(
+        host= os.environ("HOST"),
+        user=os.environ("USERNAME"),
+        passwd= os.environ("PASSWORD"),
+        db= os.environ("DATABASE"),
+        ssl_mode = "VERIFY_IDENTITY",
+        ssl      = {
+            "ca": "/etc/ssl/cert.pem"
+        }
+        )
     return conn
 
 
