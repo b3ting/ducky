@@ -4,10 +4,10 @@ import MySQLdb
 
 def get_db_conn():
     conn = connection = MySQLdb.connect(
-        host= os.environ("HOST"),
-        user=os.environ("USERNAME"),
-        passwd= os.environ("PASSWORD"),
-        db= os.environ("DATABASE"),
+        host= os.environ["HOST"],
+        user=os.environ["USERNAME"],
+        passwd= os.environ["PASSWORD"],
+        db= os.environ["DATABASE"],
         ssl_mode = "VERIFY_IDENTITY",
         ssl      = {
             "ca": "/etc/ssl/cert.pem"
