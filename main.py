@@ -60,4 +60,5 @@ def handle_json(json_data):
 
 
 if __name__ == '__main__':
+    print("Running app...")
     socketio.run(app)
