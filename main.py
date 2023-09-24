@@ -25,6 +25,7 @@ def after_request(response):
 @cross_origin()
 def get_duckies():
     duckies_list = get_all_duckies()
+    raise Exception(duckies_list)
     if len(duckies_list) == 0:
         return []
     
