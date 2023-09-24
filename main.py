@@ -25,10 +25,7 @@ def after_request(response):
 @cross_origin()
 def get_duckies():
     duckies_list = get_all_duckies()
-    raise Exception(duckies_list)
-    if len(duckies_list) == 0:
-        return []
-    
+
     return json.dumps(duckies_list, default=str)
 
 
@@ -64,6 +61,5 @@ def handle_json(json_data):
 
 
 if __name__ == '__main__':
-    print("Running app...")
     init_db()
     socketio.run(app)
