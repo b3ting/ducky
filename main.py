@@ -25,6 +25,9 @@ def after_request(response):
 @cross_origin()
 def get_duckies():
     duckies_list = get_all_duckies()
+    if len(duckies_list) == 0:
+        return []
+    
     return json.dumps(duckies_list, default=str)
 
 
