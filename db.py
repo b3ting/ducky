@@ -2,8 +2,8 @@ import os
 from typing import Tuple
 import redis
 
-# pool = redis.ConnectionPool(host='red-ck7pfb08elhc73c3a5rg', port=6379, db=0)
-pool = redis.ConnectionPool(host='redis', port=6379, db=0, decode_responses=True)
+pool = redis.ConnectionPool(host='red-ck7pfb08elhc73c3a5rg', port=6379, db=0, decode_responses=True)
+# pool = redis.ConnectionPool(host='redis', port=6379, db=0, decode_responses=True)
 r = redis.Redis(connection_pool=pool)
 
 def get_db_conn():
