@@ -1,7 +1,7 @@
 from flask import Flask, Response, request
 from flask_cors import CORS, cross_origin
 from flask_socketio import SocketIO, send, emit
-from db import get_ducky, init_db, update_ducky_location, get_all_duckies
+from db import init_db, get_ducky, update_ducky_location, get_all_duckies
 import json
 
 app = Flask(__name__)
@@ -61,4 +61,5 @@ def handle_json(json_data):
 
 if __name__ == '__main__':
     print("Running app...")
+    init_db()
     socketio.run(app)
